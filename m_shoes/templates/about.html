@@ -415,16 +415,32 @@ select {
 
   @media(max-width:730px){
     .mains{
-        border-top: #000 solid 2px;
-        display: block;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    .btn button{
-        width: 70%;
-        height: 40px;
-        margin-bottom: 10px;
-    }
+      border-top: #000 solid 2px;
+      display: block;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .btn button{
+      width: 70%;
+      height: 40px;
+      margin-bottom: 10px;
+  }
+
+  /* 👇 make size boxes grid in mobile */
+  .sizes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 per row */
+      gap: 10px;
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+
+  .sizes p {
+      text-align: center;
+      padding: 8px;
+      font-size: 1rem;
+  }
+}
   }
   </style>
   </head>
