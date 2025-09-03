@@ -58,10 +58,10 @@ def valadite(request):
                     del request.session['otp_data']  # remove OTP after use
                     del request.session['pending_user']
                   
-                    return HttpResponse('saved')
+                    return render(request,'login.html')
                  else:
                      
-                     return HttpResponse('not saved')
+                     return render(request,'sigup.html')
             return render(request,'otp.html')
 
               
