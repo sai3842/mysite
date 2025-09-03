@@ -37,3 +37,20 @@ def prfile_view(request):
 
     return render(request,'profile.html',{'data':user_data,'username':user_nm})
 
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+
+def create_superuser(request):
+    User = get_user_model()
+
+    if not User.objects.filter(is_superuser=True).exists():
+        User.objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="admin123"
+        )
+        return HttpResponse("Superuser created: admin / admin123")
+    else:
+        return HttpResponse("Superuser already exists")
+
+
