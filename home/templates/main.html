@@ -1,0 +1,345 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      
+
+      <style>
+         :root {
+      --navy: #2C3E50;
+      --cream: #F5F5DC;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --gray: #E0E0E0;
+    }
+
+body {
+       font-family: 'Georgia', serif;
+     margin: 0;
+      padding: 0;
+      background-color: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+      
+    }
+ .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(39, 39, 39);
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo a{
+            color: white;
+        }
+        .logo a:hover{
+          color: var(--gold);
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        .navbar h3 {
+            color: var(--cream);
+            background-color: var(--gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0;
+        }
+        .navbar h3:hover{
+            color: var(--gold);
+             background-color: var(--gray);
+        }
+
+        /* ✅ Username + cart wrapper */
+        .user-cart {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds 10px gap */
+        }
+        .user-cart i:hover{
+            color: var(--white);
+        }
+
+        .fa-shopping-cart {
+            font-size: 20px;
+            color: var(--gold);
+            cursor: pointer;
+        }
+.header {
+      background-color: var(--navy);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      margin-top: 5px;
+      text-align: center;
+       font-family: 'Georgia', serif;
+      border-bottom: 3px solid var(--gold);
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+    
+    .header h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+ 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+.m,.w{
+    display: none;
+}
+
+ h1{
+    text-align: center;
+    margin-top: 20px;
+}
+h2{
+    margin: 3px 0;
+    color: var(--gold);
+    text-align: center;
+    color: black;
+    border-bottom: var(--gold) solid 3px;
+    
+}
+
+.name {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   margin-bottom: 0px;
+}
+.women h3,.men h3{
+    margin-bottom: 5px;
+    text-justify: center;
+    text-align: center;
+    border: 0;
+}
+.ws{
+    margin-top: 8px;
+    
+}
+.cat{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.main img{
+    width: 90%;
+    height: auto;
+     cursor: pointer;
+     border-radius: 9px;
+    
+     padding: 20px;
+     
+     transition: transform 0.6s ease-in-out; 
+    
+}
+.main{
+    
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+} 
+
+
+    
+.men ,.women{
+    margin: 0 20px;
+    border-radius: 9px;
+     display: flex;
+     gap: 2.5%;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 300px;
+   
+     background-color: var(--white);
+      border-radius: 10px;
+      
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    
+    
+}
+
+
+.main img:hover{
+      cursor: pointer;
+     transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+    .footer {
+      background-color: var(--navy);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer p {
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+.men-shoes h2,.men-sandles h2,.women-shoes h2,.women-sandles h2{
+    color: var(--navy);
+}
+
+
+
+
+    /* Mobile styles */
+    @media (max-width: 800px) {
+        
+
+        .main img{
+            width: 200px;
+            height: 200px;
+        
+        }
+       
+        .main{
+            display: block;
+        }
+        .main h2{
+            display: block;
+            border: 0;
+            color: var(--gold);
+        }
+        .name {
+            display: none;
+        }
+        .men ,.women{
+            display: block;
+            width: 90%;
+            height: 100%;
+            text-align: center;
+            
+           
+        }
+        .men{
+            margin-bottom: 10px;
+        }
+         img{
+            padding: 10px 0;
+            box-shadow: none;
+            border-radius: 5px;
+        }
+        .w{
+            padding-top: 5px;
+            border-top: 2px solid var(--navy);
+        }
+        .women{
+            padding-top: 20px;
+        }
+    }
+
+      </style>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     
+</head>
+<body>
+   <div class="navbar">
+        <p class="logo">
+            <a href="{% url 'home' %}">My site</a>
+        </p>
+        <div class="user-cart">
+           <a href="{{ user_link }}">
+    <h3 class="username">{{ msg }}</h3>
+</a>
+
+            <a href="{%url 'cart'%}"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+  {% block content %}
+ 
+
+ <header class="header">
+          <h1>Step into <span>comfort</span>, walk out in <span>confidence</span>.</h1>
+       </header>
+
+
+       
+       <h1 class="cat">"Our Collection  👠👟 " </h1>
+
+
+       <div class="name">
+        <h2> <i class="fa-solid fa-person"></i> Men</h2>
+        <h2><i class="fa-solid fa-person-dress"></i> Women</h2>
+
+       </div>
+
+        <div class="main">
+            <h2 class="m">Men</h2>
+              <div class="men">
+                
+                <div class="men-shoes">
+                  <a href="{% url 'mshoes' %} ">  <img src="{% static 'images/men_shoes.jpg'%}"></a>
+                    <h3>shoes</h3>
+                </div>
+                
+                <div class="men-sandles">
+                  <a href="{% url 'msandles'%}">  <img src="{% static 'images/men_sandles_1.jpg'%}"> </a>
+                    <h3 >Sandles</h3>
+                </div>
+          
+            </div>   
+            
+            <h2 class="w">Women</h2>
+            <div class="women">
+                <div class="women-shoes">
+                    
+                  <a href="{%url 'wshoes'%}">    <img src="{% static 'images/women_shoes.jpg'%}"></a>
+                    <h3>shoes</h3>
+                </div>
+                <div class="women-sandles">
+                    <a href="{%url 'wsandles'%}"><img src="{% static 'images/women_sandles.jpg'%}"> </a>
+                    <h3 class="ws">Sandles</h3>
+                </div>
+            </div>
+            
+        </div>
+
+         <footer class="footer">
+    <p>© 2025 Classic Footwear. Crafted for timeless journeys.</p>
+  </footer>
+
+  {%endblock%}
+
+</script>
+</body>
+</html>

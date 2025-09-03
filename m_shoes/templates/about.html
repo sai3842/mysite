@@ -1,0 +1,668 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+      <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <style>
+    h2 span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+h2 {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+/* Animated bottom border */
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--gold);
+    width: 0;
+    animation: borderExpand 2s ease forwards;
+}
+
+@keyframes borderExpand {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+:root {
+    --navy: #2C3E50;
+    --cream: #F5F5DC;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --gray: #E0E0E0;
+    --brand-orange: #fb641b;
+}
+
+
+ body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .viewer {
+      display: inline-block;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      overflow: hidden;
+      background: #000;
+    }
+
+    .viewer img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Thumbnails row */
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .thumbnails img {
+      height: auto;
+      width: auto;
+      max-width: 120px;
+      max-height: 80px;
+      object-fit: contain;
+      cursor: pointer;
+      border-radius: 6px;
+      opacity: 0.6;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .thumbnails img.active-thumb {
+      opacity: 1;
+      transform: scale(1.1);
+      border: 2px solid #333;
+    }
+    .mains{
+        
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+
+      
+  /* Price styling */
+  .price {
+   
+    font-weight: bold;
+    font-size: 2rem;
+    color: #e63946; /* red for final price */
+  }
+  
+
+  .mrp {
+    font-size: 0.85rem;
+    color: #777;
+    margin-left: 4px;
+  }
+  .p_name{
+     text-align: left;
+     margin-left: 5%;
+  }
+  .p_name a{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+  }
+
+  .offer {
+    font-size: 0.85rem;
+    color: #2a9d8f;
+    font-weight: bold;
+  }
+
+  /* Ribbon for offers */
+  .ribbon {
+    position: absolute;
+    top: 10px;
+    left: -5px;
+    background: #e63946;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(-10deg);
+    border-radius: 4px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  } 
+  
+  #s-text{
+     display: none;
+  }
+  .details{
+    margin-top: 0;
+  }
+  .p_name h1{
+    font-size: 2rem;
+  }
+  .main-img{
+    padding: 0 20px;
+  }
+  .avl-offer {
+    justify-items: left;
+    text-align: left;
+    margin-left: 5%;
+  }
+  
+.sizes{
+  display: flex;
+  gap: 30px;
+  margin-left: 5%;
+
+}
+
+.sizes p{
+  font-size: 1.1rem;
+  font-family:  georgia,serif;
+  padding: 1px 2px;
+  color: #000;
+  font-weight: bold;
+  border: #b1b0b0 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+.sizes a{
+  padding-top: 3%;
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+.overlay {
+      display: none; /* hidden initially */
+      position: fixed; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7); /* dark background */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .overlay:target { 
+      display: flex;  /* show overlay when targeted */
+    }
+
+    /* Close button */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+    }
+    
+
+    
+ .delivary-mat p,h4{
+  text-align: left;
+  margin-left: 5%;
+ }
+
+ .material{
+  display: none;
+  transition: all 0.4s ease;
+ }
+ .material p{
+    text-align: left;
+    margin-left: 5%;
+ }
+ .p-details h3{
+  color: #000;
+  font-weight: bold;
+  font-size: 1.5rem;
+ }
+   
+ .p-details{
+  display: flex;
+  padding: 0 5%;
+  justify-content: space-between;
+  cursor: pointer;
+ }
+ 
+ .btn{
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-evenly;
+ }
+ .btn button{
+  width: 70%;
+  height: 40px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: var(--navy);
+  border-radius: 5px;
+  font-size: 1.1rem;
+  border: none;
+  
+  color: var(--gold);
+ }
+ .btn div{
+  
+  width: 100%;
+  height: 4vw;
+ }
+ .btn button:hover{
+  background-color: #455a70;
+  color: white;
+
+ }
+
+
+ 
+select {
+  width: 120px;                 /* same fixed width */
+  padding: 10px;
+  justify-content: left;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  margin-left: 5%;
+
+}
+
+
+
+.option{
+  text-align: left;
+  
+}
+.sz.active{
+    background-color: var(--navy);
+  color: white;
+  transition: all 0.5s ease;
+  box-shadow:  0 5px 15px rgba(0, 0, 0, 0.2); /* fixed alpha */
+} body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .comments-box {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      margin: 30px auto;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .comments-view {
+      background: #f9f9f9;
+      border-left: 4px solid #4a90e2;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .comments-view:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .comments-view p {
+      margin: 4px 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .comments-view span {
+      font-weight: 600;
+      color: #4a90e2;
+    }
+
+    .comments-send {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .comments-send input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+
+    .comments-send button {
+      background: #4a90e2;
+      border: none;
+      color: #fff;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .comments-send button:hover {
+      background: #357ABD;
+    }
+
+    .comments-send i {
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media(max-width: 730px) {
+      .comments-box {
+        margin: 50px auto;
+        padding: 15px;
+        width: 80%;
+
+      }
+
+      .comments-send input[type="text"] {
+        font-size: 13px;
+      }
+
+      .comments-view p {
+        font-size: 13px;
+      }
+    }
+
+
+  @media(max-width:730px){
+    .mains{
+        border-top: #000 solid 2px;
+        display: block;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .btn button{
+        width: 70%;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+  }
+  </style>
+  </head>
+  <body>
+
+     {%include "header.html" %}
+
+    {%block content%}
+    
+
+<div class="mains">
+        <div class="main-img">  
+          <!-- Main Viewer -->
+          <div class="viewer">
+              {% if imageset.img1 %}
+                    <img id="mainImage" src="{{ imageset.img1.url }}">
+                 {% endif %}
+            </div>
+
+                   <!-- Thumbnails -->
+            <div class="thumbnails">
+                      {% if imageset.img1 %}
+                         <img src="{{ imageset.img1.url }}" onclick="showImage(this)" class="active-thumb">
+                      {% endif %}
+                      {% if imageset.img2 %}
+                       <img src="{{ imageset.img2.url }}" onclick="showImage(this)">
+                        {% endif %}
+                      {% if imageset.img3 %}
+                       <img src="{{ imageset.img3.url }}" onclick="showImage(this)">
+                      {% endif %}
+                       {% if imageset.img4 %}
+                     <img src="{{ imageset.img4.url }}" onclick="showImage(this)">
+                     {% endif %}
+              </div>
+                 <!-- Main img close -->
+          </div>  
+
+
+          
+         {% for product in products %}
+    
+          <div class="details" id="details">
+                      <div class="p_name">
+                           <h1>{{product.name}}</h1> 
+                            <p class="price">
+                         ₹{{up_price}}
+                          <span class="mrp">M.R.P <del>₹{{og_price }}</del></span>
+                          <span class="offer">({{ product.offer }}%)</span>
+                           </p>
+                      </div>
+
+                <div class="avl-offer">
+                  <h4>Available offers</h4>
+                  <section id="f-text">
+                  <p> <b>Bank Offer</b>  5% cashback on Axis Bank Flipkart Debit Card up to ₹750T&C</p>
+                  <p> <b>Bank Offer </b> 5% cashback on Flipkart Axis Bank Credit Card upto ₹4,000 per statement quarter T&C</p>
+                  <p> <b>Bank Offer</b>  Up To ₹30 Instant Cashback on BHIM Payments App. Min Order Value ₹199. Offer Valid Once Per UserT&C</p>
+                  <p><b>Special Price</b> Get extra 55% off (price inclusive of cashback/coupon)T&C</p>
+                  </section>
+                  <section id="s-text">
+                    <p><b> Bank Offer</b>  Flat ₹30 Assured Cashback on Mobikwik UPI. Min Order Value ₹999. Valid once per Mobikwik accountT&C</p>
+                    <p><b>Bank Offer</b>  Flat ₹10 Instant Cashback on Paytm UPI Trxns. Min Order Value ₹199. Valid once per Paytm accountT&C</p>
+                  </section>
+                  <a onclick="fun()" id="tog">view more</a>
+                </div>
+
+                 <form method="GET" action="">
+               
+                          <div class="sizes">
+                            {% if product.size %}
+                             <input type="hidden" name="size" id="selectedSize">
+                                  <b>  <h5>Available Sizes</h5></b>
+                                    <p class="sz" onclick="change(this)" > {{ product.size.size1 }}</p> 
+                                    <p class="sz" onclick="change(this)"> {{ product.size.size2 }}</p>
+                                    <p class="sz" onclick="change(this)"> {{ product.size.size3 }}</p>
+                                    <p class="sz" onclick="change(this)">{{ product.size.size4 }}</p>
+                                    <p class="sz" onclick="change(this)">{{ product.size.size5 }}</p>
+                                    <a  href="#img1">Size Chart</a>
+                            {% endif %}
+                          </div>
+                          <!-- over lay img size chart-->
+                           <div id="img1" class="overlay">
+                               <a href="#" class="close-btn">&times;</a>
+                               <img src="{% static 'images/size_chart.png'%}" alt="Popup Image">
+                           </div>
+                            
+                           <!-- quantity -->
+                           <div class="option">
+                                     <select name="quantity" id="quantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                     </select>
+                             </div>
+                              
+                              <!-- delivary date-->
+                              <div class="delivary-mat">
+                               <h4>{{time}}</h4>
+                               <h4>{{fst}}</h4>
+                              </div>
+                               
+                               <!--additional details   hiden-->
+                               <section class="p-details">
+                                    <h3 id="product" onclick="display()">Product Details</h3>
+                                    <h3 id="product-mns" onclick="display()">+</h3>
+                                 </section>
+
+                                  <div class="material" id="material">
+                                      <p><b>About:</b> {{ product.about }}</p>
+                                     {% if product.material %}
+                                            <p><b>Material:</b> {{ product.material.Material }}</p>
+                                            <p><b>Heel Type:</b> {{ product.material.Heel_type }}</p>
+                                             <p><b>Water Resistance:</b> {{ product.material.Water_resistance_level }}</p>
+                                            <p><b>Sole Material:</b> {{ product.material.Sole_material }}</p>
+                                            <p><b>Style:</b> {{ product.material.Style }}</p>
+                                            <p><b>Country:</b> {{ product.material.Country_of_Origin }}</p>
+                                      {% endif %}
+                                   </div>
+                                    <!-- cart & buy buttons -->
+                                    <div class="btn">
+                                      <div><button type="submit">  <i class="fas fa-shopping-cart"></i>  Add To Cart </button></div>
+                                      <div><a><button>  <i class="fas fa-bolt"></i>  Buy Now</button></a></div>
+                                    </div>
+                                    
+                 </form>
+                 
+              
+              
+      </div>
+          
+          {%endfor%}
+</div>
+
+
+     <div class="comments-box">
+    <form action="" method="post" onsubmit="return validate()">
+      {% csrf_token %}
+      <input type="hidden" name="user" value="{{product.id}}">
+      
+      {% for i in view_cmt %}
+      <div class="comments-view">
+        <div>
+          <p>User : <span>{{ i.user_name }}</span></p>
+          <p>{{ i.user_com }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      
+      <div class="comments-send">
+        <input type="text" name="text" placeholder="Write a comment..." id="input">
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </form>
+  </div>
+    {%endblock%}
+
+    {%include "foter.html"%}
+
+    
+<script>
+  const mainImage = document.getElementById("mainImage");
+  const thumbs = document.querySelectorAll(".thumbnails img");
+
+  function showImage(thumb) {
+    // Fade out current image
+    mainImage.style.opacity = 0;
+
+    setTimeout(() => {
+      mainImage.src = thumb.src;
+      mainImage.style.opacity = 1;
+    }, 300); // matches transition
+
+    // Highlight selected thumbnail
+    thumbs.forEach(t => t.classList.remove("active-thumb"));
+    thumb.classList.add("active-thumb");
+  }
+
+  
+  const f_text=document.getElementById('f-text');
+  const s_text=document.getElementById('s-text');
+  const btn=document.getElementById('tog');
+  const marg=document.getElementById('details')
+
+  function fun(){
+    if(s_text.style.display === 'none'){
+      s_text.style.display = 'block';
+     
+      btn.innerText='view less';
+
+
+    }
+    else{
+      s_text.style.display = 'none';
+      btn.innerText = 'view more';
+    }
+   
+  }
+ 
+  const material=document.getElementById('material');
+  const product = document.getElementById('product');
+  const mns = document.getElementById('product-mns');
+  function display(){
+    if(getComputedStyle(material).display === 'none'){
+      material.style.display = 'block';
+      mns.innerText = "-";
+      material.style.transition = "0.4s"
+    
+    }
+    else{
+      material.style.display = 'none';
+      mns.innerText = "+";
+     
+    }
+  }
+
+function change(element){
+  document.querySelectorAll('.sz').forEach(el => el.classList.remove('active'));
+  element.classList.add('active');
+
+  // update hidden input so it gets submitted
+  document.getElementById("selectedSize").value = element.innerText;
+}
+
+function validate(){
+  let input=document.getElementById('input').value.trim();
+
+  if(input === ""){
+    alert('coment can not be empty' );
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+  </script>
+
+
+  </body>
+</html>

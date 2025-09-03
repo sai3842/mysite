@@ -1,0 +1,237 @@
+ :root {
+      --navy: #2C3E50;
+      --cream: #F5F5DC;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --gray: #E0E0E0;
+    }
+
+body {
+       font-family: 'Georgia', serif;
+     margin: 0;
+      padding: 0;
+      background-color: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+      
+    }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(44, 44, 44);
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar h3 {
+    color: white;
+    border: yellow;
+    background-color: #D4AF37;
+    padding: 5px;
+    border-radius: 5px;
+}
+h3 {
+    color: white;
+     color: white;
+    border: yellow;
+    background-color: #D4AF37;
+    padding: 5px;
+    border-radius: 5px;
+}
+ .logo a{
+        color: white;
+        text-decoration: none;
+    }
+.header {
+      background-color: var(--navy);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      margin-top: 5px;
+      text-align: center;
+       font-family: 'Georgia', serif;
+      border-bottom: 3px solid var(--gold);
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+    
+    .header h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+ 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+.m,.w{
+    display: none;
+}
+
+ h1{
+    text-align: center;
+    margin-top: 20px;
+}
+h2{
+    margin: 3px 0;
+    color: var(--gold);
+    text-align: center;
+    color: black;
+    border-bottom: var(--gold) solid 3px;
+    
+}
+
+.name {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   margin-bottom: 0px;
+}
+.women h3,.men h3{
+    margin-bottom: 5px;
+    text-justify: center;
+    text-align: center;
+    border: 0;
+}
+.ws{
+    margin-top: 8px;
+    
+}
+.cat{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.main img{
+    width: 90%;
+    height: auto;
+     cursor: pointer;
+     border-radius: 9px;
+    
+     padding: 20px;
+     
+     transition: transform 0.6s ease-in-out; 
+    
+}
+.main{
+    
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+} 
+
+
+    
+.men ,.women{
+    margin: 0 20px;
+    border-radius: 9px;
+     display: flex;
+     gap: 2.5%;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 300px;
+   
+     background-color: var(--white);
+      border-radius: 10px;
+      
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    
+    
+}
+
+
+.main img:hover{
+      cursor: pointer;
+     transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+    .footer {
+      background-color: var(--navy);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer p {
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+.men-shoes h2,.men-sandles h2,.women-shoes h2,.women-sandles h2{
+    color: var(--navy);
+}
+
+
+
+
+    /* Mobile styles */
+    @media (max-width: 800px) {
+        
+
+        .main img{
+            width: 200px;
+            height: 200px;
+        
+        }
+       
+        .main{
+            display: block;
+        }
+        .main h2{
+            display: block;
+            border: 0;
+            color: var(--gold);
+        }
+        .name {
+            display: none;
+        }
+        .men ,.women{
+            display: block;
+            width: 90%;
+            height: 100%;
+            text-align: center;
+            
+           
+        }
+        .men{
+            margin-bottom: 10px;
+        }
+         img{
+            padding: 10px 0;
+            box-shadow: none;
+            border-radius: 5px;
+        }
+        .w{
+            padding-top: 5px;
+            border-top: 2px solid var(--navy);
+        }
+        .women{
+            padding-top: 20px;
+        }
+    }

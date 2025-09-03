@@ -1,0 +1,163 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Login</title>
+         <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+                      :root {
+    --navy: #2C3E50;
+    --cream: #F5F5DC;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --gray: #E0E0E0;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--navy);
+            /*background: linear-gradient(135deg, #6a11cb, #2575fc);*/
+             background: url("{% static 'images/bg.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form {
+            background-color: #dfe2cacb;
+            
+            border-radius: 12px;
+            padding: 30px 25px;
+            width: 100%;
+            max-width: 400px;
+           
+            text-align: center;
+
+             background: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);  
+               -webkit-backdrop-filter: blur(10px);   
+               border: 1px solid rgba(255, 255, 255, 0.2);
+               box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form h2 {
+            margin-bottom: 20px;
+            color: var(--navy);
+        }
+
+        .form input[type="text"],input[type='password'] {
+            width: 90%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form input[type="text"],input[type='password']:focus {
+            border-color: #BAC095;
+            box-shadow: 0 0 5px rgba(68, 156, 119, 0.5);
+        }
+
+        .form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #1A2B49;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form input[type="submit"]:hover {
+            background-color: #112750;
+            color: var(--gold);
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+           
+            background-color: #1A2B49;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a:hover {
+            color: var(--gold);
+             background-color: #112750;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .form {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    </head>
+    <body>
+        <div class="center-container">
+            <div class="form">
+                <h2> login </h2>
+                <form action="" method="post" onsubmit="return validate()">
+                    {%csrf_token%}
+                    <input type="text" placeholder="username / email" name="username" id="username">
+                    <input type="password" placeholder="password" name="password" id="password">
+                    <input type="submit" value="login">
+                    
+                </form>
+                <a href="{% url 'sigin' %}">Create New Account</a>
+                 <a href="{% url 'forgrt'%}">Forget Password</a>
+                 
+            </div>
+            
+          
+        </div>
+
+        <script>
+function validate() {
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    // Check username/email
+    if (username === "") {
+        alert("Please enter your username or email");
+        return false;
+    }
+
+    // Check password
+    if (password === "") {
+        alert("Please enter your password");
+        return false;
+    } else if (password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return false;
+    }
+
+    return true; // ✅ Allow form submit
+}
+</script>
+
+    </body>
+</html>

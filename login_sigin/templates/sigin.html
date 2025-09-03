@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>
+        <form action="" method="post" >
+            {%csrf_token%}
+            {{form.username.label}} {{form.username}} <br> <br>
+               {{form.email.label}} {{form.email}}  <br> <br>
+                  {{form.password.label}} {{form.password}}  <br> <br>
+             <input type="submit" value="sigin">
+        </form>
+       
+        </div>
+        {{data}}
+
+
+
+        
+    </body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Sandles</title>
+         <link rel="stylesheet" href="{% static 'css/Sandles.css'%}">
+      
+
+    </head>
+    <body>
+       {%include "header.html" %}
+
+     {%block content%}
+   <center>
+     <h2> Men’s <span>Sandles</span> Collections</h2>
+   </center>
+     <div class="container">
+        <div><a href="{%url 'wview' 'Plant Paaducks'%}"> <img src="{% static 'images/pp.png' %}"> </a></div>
+        <div><a  href="{%url 'wview' 'Van heusen'%}">  <img src="{% static 'images/vhs.png' %}"> </a></div>
+        <div> <a  href="{%url 'wview' 'Luvfeet'%}"> <img src="{% static 'images/lv.png' %}"> </a></div>
+        <div> <a  href="{%url 'wview' 'yoho'%}"> <img src="{% static 'images/yoho.jpg' %}"></a> </div>
+ 
+        
+        <div> <a  href="{%url 'wview' 'West Side'%}"> <img src="{% static 'images/ws.png' %}"></a> </div>
+     </div>
+
+     
+    <section>
+        {% for product in data %}
+            <div>
+               
+                <a href="{% url 'product_list' product.id%}">
+                {% if product.image_set and product.image_set.img1 %}
+                    <img src="{{ product.image_set.img1.url }}" alt="{{ product.name }}">
+                 </a>
+                {% else %}
+                    <p>No image</p>
+                {% endif %}
+              <a href="{% url 'product_list' product.id%}"> <h4>{{product.name}}</h4> </a> 
+                <p class="price">
+                 ₹{{ product.up_price }}
+                  <span class="mrp">M.R.P <del>₹{{ product.og_price }}</del></span>
+                  <span class="offer">({{ product.offer }}%)</span>
+                </p>
+                <p>Brand: {{ product.brand.name}}</p>
+                <p>{{time}}</p>
+                <p>{{fst}}</p>
+               <a href="{% url 'product_list' product.id%}"> <button class="cart-btn" >Add to Cart</button></a>
+                </form>
+
+            </div>
+        {% endfor %}
+  
+    </section>
+     {%endblock%}
+
+     {%include "foter.html"%}
+
+      
+     
+   
+    </body>
+</html>

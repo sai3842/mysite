@@ -1,0 +1,178 @@
+<!--
+
+<!DOCTYPE html>
+<html>
+    <head>
+       <style>
+             :root {
+    --navy: #2C3E50;
+    --cream: #F5F5DC;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --gray: #E0E0E0;
+}
+
+
+
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--navy);
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.navbar a{
+    text-decoration: none;
+}
+
+.navbar h3 {
+    color: var(--cream);
+    border: var(--gold);
+    background-color: var(--gold);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+       </style> 
+     
+    </head>
+    <body>
+     <div class="navbar">
+        <p class="logo">
+          <a href="{% url 'home'%}"> My site </a> 
+        </p>
+        <p>
+        <a href="{%url 'login'%}">
+        <h3 class="username">
+            {{username}}
+        </h3>
+        </a>
+        <i class="fas fa-shopping-cart"></i>
+        </p>
+     </div>
+   
+
+    <script>
+
+
+   
+    </script>
+
+    </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --navy: #2C3E50;
+            --cream: #F5F5DC;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --gray: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--navy);
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            text-decoration: none;
+        }
+
+        .navbar h3 {
+            color: var(--cream);
+            background-color: var(--gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0;
+        }
+        .navbar h3:hover{
+            color: var(--gold);
+             background-color: var(--gray);
+        }
+
+        /* ✅ Username + cart wrapper */
+        .user-cart {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adds 10px gap */
+        }
+        .user-cart i:hover{
+            color: var(--white);
+        }
+
+        .fa-shopping-cart {
+            font-size: 20px;
+            color: var(--gold);
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Font Awesome (for cart icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <p class="logo">
+            <a href="{% url 'home' %}">My site</a>
+        </p>
+        <div class="user-cart">
+          
+    {% if username == "Login" %}
+    <a href="{% url 'login' %}">
+        <h3 class="username">{{ username }}</h3>
+    </a>
+{% else %}
+    <a href="{% url 'profile' %}">
+        <h3 class="username">{{ username }}</h3>
+    </a>
+{% endif %}
+
+           <a href="{%url 'cart'%}"> <i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</body>
+</html>

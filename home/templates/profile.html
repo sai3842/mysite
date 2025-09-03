@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --bg: #F4F6F8;
+            --white: #FFFFFF;
+            --navy: #2C3E50;
+      --cream: #F5F5DC;
+      --gold: #D4AF37;
+      --white: #FFFFFF;
+      --gray: #E0E0E0;
+        }
+        .navbar a{
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .profile-card {
+            max-width: 500px;
+            margin: 30px auto;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-card h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            color: var(--primary);
+        }
+
+        .profile-card .highlight {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .profile-actions {
+            margin-top: 20px;
+        }
+
+        .profile-actions a {
+            display: inline-block;
+            text-decoration: none;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .profile-actions a.forget {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+       .profile-actions a.status{
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .profile-actions a.logout {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .profile-actions a:hover {
+            opacity: 1.5;
+            
+            color: var(--gold);
+
+        }
+       
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .profile-card {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .profile-actions a {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+
+    <h1>Profile</h1>
+
+    <div class="profile-card">
+        <h2>Username: <span class="highlight">{{ data.username }}</span></h2>
+        <h2>Email: <span class="highlight">{{ data.email }}</span></h2>
+
+        <div class="profile-actions">
+            <a href="{% url 'forgrt' %}" class="forget">Update Password</a>
+            <a href="{% url 'logout' %}" class="logout">Logout</a>
+            <a href="{%url 'status'%}" class="status">Check Status</a>
+        </div>
+        
+    </div>
+
+    {% include "foter.html" %}
+</body>
+</html>

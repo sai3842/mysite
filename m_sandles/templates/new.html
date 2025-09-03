@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .images img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Brand -->
+    <div class="section">
+        <h2>Brand</h2>
+        {% for b in brand %}
+            <p>{{ b.brand_name }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Images -->
+    <div class="section images">
+        <h2>Images</h2>
+        {% for i in imgs %}
+            {% if i.image1 %}
+                <img src="{{ i.image1.url }}" alt="Image 1">
+            {% endif %}
+            {% if i.image2 %}
+                <img src="{{ i.image2.url }}" alt="Image 2">
+            {% endif %}
+            {% if i.image3 %}
+                <img src="{{ i.image3.url }}" alt="Image 3">
+            {% endif %}
+            {% if i.image4 %}
+                <img src="{{ i.image4.url }}" alt="Image 4">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Material Details -->
+    <div class="section">
+        <h2>Material & Specs</h2>
+        {% for m in mats %}
+            <p><strong>Material:</strong> {{ m.material }}</p>
+            <p><strong>Heel Type:</strong> {{ m.Heel_type }}</p>
+            <p><strong>Water Resistance:</strong> {{ m.Water_resistance_level }}</p>
+            <p><strong>Style:</strong> {{ m.Style }}</p>
+            <p><strong>Outer Material:</strong> {{ m.Outer_material }}</p>
+            <p><strong>Country of Origin:</strong> {{ m.Country_of_Origin }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Shoe Info -->
+    <div class="section">
+        <h2>Shoe Details</h2>
+        {% for s in mshoes %}
+            <p><strong>Product:</strong> {{ s.product }}</p>
+            <p><strong>Price:</strong> ₹{{ s.price }}</p>
+            <p><strong>Offer:</strong> {{ s.offer }}</p>
+            <ul>
+                <li>{{s.inf1}}</li>
+                <li>{{s.inf2}}</li>
+                <li>{{s.inf3}}</li>
+               
+            </ul>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+:root {
+    --navy: #2C3E50;
+    --cream: #F5F5DC;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --gray: #E0E0E0;
+    --brand-orange: #fb641b;
+}
+
+
+ body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .viewer {
+      display: inline-block;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      overflow: hidden;
+      background: #000;
+    }
+
+    .viewer img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Thumbnails row */
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .thumbnails img {
+      height: auto;
+      width: auto;
+      max-width: 120px;
+      max-height: 80px;
+      object-fit: contain;
+      cursor: pointer;
+      border-radius: 6px;
+      opacity: 0.6;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .thumbnails img.active-thumb {
+      opacity: 1;
+      transform: scale(1.1);
+      border: 2px solid #333;
+    }
+    .mains{
+        
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+
+      
+  /* Price styling */
+  .price {
+   
+    font-weight: bold;
+    font-size: 2rem;
+    color: #e63946; /* red for final price */
+  }
+  
+
+  .mrp {
+    font-size: 0.85rem;
+    color: #777;
+    margin-left: 4px;
+  }
+  .p_name{
+     text-align: left;
+     margin-left: 5%;
+  }
+  .p_name a{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+  }
+
+  .offer {
+    font-size: 0.85rem;
+    color: #2a9d8f;
+    font-weight: bold;
+  }
+
+  /* Ribbon for offers */
+  .ribbon {
+    position: absolute;
+    top: 10px;
+    left: -5px;
+    background: #e63946;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(-10deg);
+    border-radius: 4px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  } 
+  
+  #s-text{
+     display: none;
+  }
+  .details{
+    margin-top: 0;
+  }
+  .p_name h1{
+    font-size: 2rem;
+  }
+  .main-img{
+    padding: 0 20px;
+  }
+  .avl-offer {
+    justify-items: left;
+    text-align: left;
+    margin-left: 5%;
+  }
+  
+.sizes{
+  display: flex;
+  gap: 30px;
+  margin-left: 5%;
+
+}
+
+.sizes p{
+  font-size: 1.1rem;
+  font-family:  georgia,serif;
+  padding: 1px 2px;
+  color: #000;
+  font-weight: bold;
+  border: #b1b0b0 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+.sizes a{
+  padding-top: 3%;
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+.overlay {
+      display: none; /* hidden initially */
+      position: fixed; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7); /* dark background */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .overlay:target { 
+      display: flex;  /* show overlay when targeted */
+    }
+
+    /* Close button */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+    }
+    
+
+    
+ .delivary-mat p,h4{
+  text-align: left;
+  margin-left: 5%;
+ }
+
+ .material{
+  display: none;
+  transition: all 0.4s ease;
+ }
+ .material p{
+    text-align: left;
+    margin-left: 5%;
+ }
+ .p-details h3{
+  color: #000;
+  font-weight: bold;
+  font-size: 1.5rem;
+ }
+   
+ .p-details{
+  display: flex;
+  padding: 0 5%;
+  justify-content: space-between;
+  cursor: pointer;
+ }
+ 
+ .btn{
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-evenly;
+ }
+ .btn button{
+  width: 70%;
+  height: 40px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: var(--navy);
+  border-radius: 5px;
+  font-size: 1.1rem;
+  border: none;
+  
+  color: var(--gold);
+ }
+ .btn div{
+  
+  width: 100%;
+  height: 4vw;
+ }
+ .btn button:hover{
+  background-color: #455a70;
+  color: white;
+
+ }
+
+
+ 
+select {
+  width: 120px;                 /* same fixed width */
+  padding: 10px;
+  justify-content: left;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+  margin-left: 5%;
+
+}
+
+
+
+.option{
+  text-align: left;
+  
+}
+.sz.active{
+    background-color: var(--navy);
+  color: white;
+  transition: all 0.5s ease;
+  box-shadow:  0 5px 15px rgba(0, 0, 0, 0.2); /* fixed alpha */
+} body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .comments-box {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      margin: 30px auto;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .comments-view {
+      background: #f9f9f9;
+      border-left: 4px solid #4a90e2;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .comments-view:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .comments-view p {
+      margin: 4px 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .comments-view span {
+      font-weight: 600;
+      color: #4a90e2;
+    }
+
+    .comments-send {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .comments-send input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+
+    .comments-send button {
+      background: #4a90e2;
+      border: none;
+      color: #fff;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .comments-send button:hover {
+      background: #357ABD;
+    }
+
+    .comments-send i {
+      font-size: 16px;
+    }
+
+    /* Responsive */
+    @media(max-width: 730px) {
+      .comments-box {
+        margin: 50px auto;
+        padding: 15px;
+        width: 80%;
+
+      }
+
+      .comments-send input[type="text"] {
+        font-size: 13px;
+      }
+
+      .comments-view p {
+        font-size: 13px;
+      }
+    }
+
+
+  @media(max-width:730px){
+    .mains{
+        border-top: #000 solid 2px;
+        display: block;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .btn button{
+        width: 70%;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+  }

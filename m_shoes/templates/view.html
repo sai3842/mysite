@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Payment</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <style>
+    .pay-box { text-align: center; 
+     
+   
+    width: 90%; 
+    margin: 0 auto;
+    padding: 30px 0;
+  }
+    canvas { margin: 15px 0; }
+    .upi-btn {
+      padding: 10px 15px;
+      background: #5a2ca0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .upi-btn:hover { background: #432080;
+    text-decoration: none;
+    margin-bottom: 10px;
+   }
+    .btns{
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+    .btns button{
+      background-color: #432080;
+      color: #fff;
+      border-radius: 5px;
+      margin-top: 50px;
+      width: 100px;
+      height: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      
+    }
+    .inf{
+      text-align: left;
+     padding-top: 10px;
+      width: 50%;
+      margin: 0 auto;
+      padding-left: 10px;
+    }
+    .inf h2{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="pay-box">
+    <h2>Pay with UPI</h2>
+
+    <!-- QR Code -->
+    <canvas id="qr"></canvas>
+
+    <!-- Button -->
+     <h2>Amount : {{data}}</h2>
+     <br>
+     <h2>Upi : 7075638319@axl</h2>
+     
+    <br>
+    <a id="upiLink" class="upi-btn">Pay with PhonePe / UPI App</a>
+     <br>
+     <div class="inf">
+        <p>1.Scan the qr to pay the ammount / pay the ammount by upi app</p>
+        <p>2.after paying press <b>Conform </b></p>
+        <p>3.To cancle payment Press <b> Cancle </b></p>
+        <p>4.After clicking conform you will see status -- Pending</p>
+        <p>5.After 5 min you will see Sucess if you payed corectly</p>
+        <p>To check status click on username Top right in that you will see Status button</p>
+        <h2>For any support Plese conect to </h2>
+        <h2>saikrishna7071@gmail.com</h2>
+     </div>
+    <div class="btns">
+   <a href="{%url 'status'%}" class="upi-btn"> Conform </a>
+    <a href="{%url 'pays'%}" class="upi-btn">Cancle</a>
+  </div>
+
+  </div>
+
+  
+
+  <script>
+    // UPI link from Django
+    const upiUrl = "{{ upi_url }}";
+
+    // Generate QR Code
+    const qr = new QRious({
+      element: document.getElementById("qr"),
+      value: upiUrl,
+      size: 200
+    });
+
+    // Button link
+    document.getElementById("upiLink").setAttribute("href", upiUrl);
+  </script>
+</body>
+</html>

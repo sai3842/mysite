@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>status</title>
+         <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <style>
+            h2{
+                text-align: center;
+            }
+           .product-table {
+  width: 70%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.product-table th {
+  background: #0077b6;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.product-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  text-align: center;
+}
+
+.product-table tr:hover {
+  background: #f1f5f9;
+}
+
+.product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.status{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+.navbar a{
+    color: white;
+}
+
+
+         </style>
+    </head>
+    <body>
+        {%include "header.html"%}
+        <h2>Status</h2>
+        <table class="product-table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Item Name</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in data %}
+    <tr>
+      <td>
+        <img src="{{ i.image.url }}" alt="{{ i.name }}" class="product-img">
+      </td>
+      <td>{{ i.name }}</td>
+    </tr>
+    <!-- common row -->
+   
+    {% endfor %}
+    
+  </tbody>
+
+</table>
+<div class="status">
+<h2>Status</h2>
+<h3 id="st">{{ord.state}}</h3>
+</div>
+
+<script>
+     var statusElement = document.getElementById('st');
+    var statusText = statusElement.innerText.trim(); // get text
+
+    if (statusText === 'pending..') {
+        statusElement.style.color = 'orange';
+    } else if (statusText === 'completed') {
+        statusElement.style.color = 'green';
+    } else if (statusText === 'Rejected') {
+        statusElement.style.color = 'red';
+    }
+
+   
+</script>
+
+
+    </body>
+</html>

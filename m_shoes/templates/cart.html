@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+   <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+    --navy: #2C3E50;
+    --cream: #F5F5DC;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --gray: #E0E0E0;
+    --brand-orange: #fb641b;
+}
+.prc{
+  color: var(--gold);
+}   /* Container */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+ 
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+/* Each product card */
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex-wrap: wrap;
+  gap: 15px;
+    border-bottom: black 1px solid;
+    margin-bottom: 5px;
+}
+
+/* Image */
+.product-img img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Details */
+.product-details {
+  flex: 1;
+  min-width: 200px;
+
+}
+
+.product-details h4 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.product-details .prc {
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+.product-details .size {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Quantity buttons */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.quantity .btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity .btn:hover {
+  background: #155ab6;
+}
+
+.qty-input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+/* Delete icon */
+.del a {
+  color: #e63946;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.del a:hover {
+  color: #b91c1c;
+}
+
+/* Order summary */
+.order-summary {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.order-summary h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--navy);
+}
+
+.order-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.order-btn:hover {
+  background: #218838;
+}
+
+
+
+h2 span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+h2 {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+/* Animated bottom border */
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--gold);
+    width: 0;
+    animation: borderExpand 2s ease forwards;
+}
+
+@keyframes borderExpand {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-img img {
+    width: 80px;
+  }
+
+  .order-summary {
+    text-align: center;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  {%include "header.html"%}
+  {%block content%}
+  <center>
+     <h2>{{username}}’s <span>Cart</span> </h2>
+    </center>
+
+   
+
+
+
+
+<section class="cart-container">
+  <div class="cart-items">
+    {% for i in data %}
+    <div class="product">
+      {% if i.image %}
+      <div class="product-img">
+        <img src="{{ i.image.url }}" alt="{{ i.name }}">
+      </div>
+      {% endif %}
+
+      <div class="product-details">
+       <a href="{%url 'product_list' i.no%}"> <h4>{{ i.name }}</h4> </a>
+       <p class="prc">{{ i.price }}</p> 
+        <p class="size"> {{ i.size }}</p>
+
+        <div class="quantity">
+          <button class="btn" onclick="dec(this)">-</button>
+          <input type="text" value="{{ i.quantity }}" class="qty-input" readonly>
+          <button class="btn" onclick="inc(this)">+</button>
+        </div>
+
+        <p class="result">Total: {{ i.price|floatformat:2 }}</p>
+      </div>
+
+      <div class="del">
+        <a href="{% url 'del' i.no %}" title="Delete">🗑️</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+<form action="{% url 'view' %}" method="post">
+  {% csrf_token %}
+  <div class="order-summary">
+    <input type="hidden" name="gtotal" id="gtotal">
+    <h3 id="grand-total">Grand Total: 0</h3>
+    <button class="order-btn" type="submit">Place Order</button>
+  </div>
+</form>
+
+</section>
+
+{%endblock%}
+
+{%include "foter.html"%}
+
+<script>
+  // Function to update total for one product
+function updateTotal(product) {
+  let price = parseFloat(product.querySelector(".prc").innerText);
+  let qty = parseInt(product.querySelector(".qty-input").value);
+  let result = product.querySelector(".result");
+  let total = price * qty;
+
+  result.innerText = "Total: " + total;
+
+  // After updating this product, update grand total
+  updateGrandTotal();
+}
+
+// Function to calculate sum of all product totals
+function updateGrandTotal() {
+  let grand = 0;
+  document.querySelectorAll(".product").forEach(product => {
+    let price = parseFloat(product.querySelector(".prc").innerText);
+    let qty = parseInt(product.querySelector(".qty-input").value);
+    grand += price * qty;
+  });
+
+  const tot=document.getElementById("grand-total").innerText = "Grand Total: " + grand;
+  document.getElementById('gtotal').value = grand;
+}
+
+// Initialize totals for all products when page loads
+document.querySelectorAll(".product").forEach(product => {
+  updateTotal(product);
+});
+
+function inc(element) {
+  let product = element.closest(".product");
+  let input = product.querySelector(".qty-input");
+  let value = parseInt(input.value);
+
+  if (value < 5) {
+    input.value = value + 1;
+  }
+  updateTotal(product);
+}
+
+function dec(element) {
+  let product = element.closest(".product");
+  let input = product.querySelector(".qty-input");
+  let value = parseInt(input.value);
+
+  if (value > 1) {
+    input.value = value - 1;
+  }
+  updateTotal(product);
+}
+
+</script>
+</body>
+</html>
