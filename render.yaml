@@ -1,34 +1,25 @@
+
 services:
   - type: web
-    name: mysite
+    name: django-app
     env: python
     plan: free
     buildCommand: |
       pip install -r requirements.txt
+      python manage.py migrate
       python manage.py collectstatic --noinput
-    startCommand: gunicorn mysite.wsgi:application --bind 0.0.0.0:$PORT
-    postDeployCommand: python manage.py migrate
+    startCommand: gunicorn mysite.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: mysite.settings
-      - key: SECRET_KEY
-        generateValue: true
-      - key: DEBUG
-        value: "False"
-      - key: ALLOWED_HOSTS
-        value: ".onrender.com"
-      - key: CSRF_TRUSTED_ORIGINS
-        value: "https://*.onrender.com"
-      - key: CLOUDINARY_CLOUD_NAME
-        sync: false
-      - key: CLOUDINARY_API_KEY
-        sync: false
-      - key: CLOUDINARY_API_SECRET
-        sync: false
+        value: ecom.settings  
       - key: DATABASE_URL
         fromDatabase:
           name: django-db
           property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: CLOUDINARY_URL
+        sync: false   
 
 databases:
   - name: django-db
