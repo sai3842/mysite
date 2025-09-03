@@ -405,7 +405,7 @@ def logout_view(request):
     
     return redirect('home')
 
-@login_required
+@custom_login_required
 def status(request):
     ns = request.session.get('user_name', None)
     cart_db=cart.objects.filter(user_name=ns)
