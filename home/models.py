@@ -25,7 +25,7 @@ class Imageset(models.Model):
     img1=CloudinaryField('image')
     img2=CloudinaryField('image')
     img3=CloudinaryField('image')
-    img4=CloudinaryField(upload_to='image')
+    img4=CloudinaryField('image')
 
     def __str__(self):
         return f"imageset {self.id}"
