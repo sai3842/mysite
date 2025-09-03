@@ -240,7 +240,7 @@ section{
 
   @media (max-width:730px){
     .container img {
-      width: 80px;
+      width: 50px;
      border-radius: 50%;
    
 }
