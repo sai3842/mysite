@@ -9,7 +9,7 @@ import random
 def msandles(request,name=None):
 
     if name:
-        products=Product.objects.filter(brand__name=name)
+        products=Product.objects.filter(brand__name=name,gender__name='Male',cat__name='Sandles')
     else:
         products = Product.objects.filter(cat__name='Sandles',gender__name='Male')
 
